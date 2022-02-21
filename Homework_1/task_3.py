@@ -1,0 +1,6 @@
+print('Введите первую строку какого-нибудь стихотворения: ')
+poetryLine = input()
+print("Длина этой строки равна: ", len(poetryLine))
+print('Введите начальную и конечную позиции (одной строкой через пробел): ')
+firstEntry, lastEntry = map(int, input().split())
+print(poetryLine[firstEntry:lastEntry + 1])
