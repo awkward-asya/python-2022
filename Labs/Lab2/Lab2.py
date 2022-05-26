@@ -1,8 +1,14 @@
-list_initializer = open('/Users/asenkasazonova/PycharmProjects/Lab2/students.txt', 'w')
+import sys
+
+path = sys.path[0] + '/students.txt'
+# print(path)
+# print(type(path))
+list_initializer = open(path, 'w')
+# print(list_initializer)
 
 
 def add_new_student(name, surname):
-    student_list = open('/Users/asenkasazonova/PycharmProjects/Lab2/students.txt', 'r')
+    student_list = open(path, 'r')
     student = student_list.readlines()
     # print(student)
     student = [person.strip() for person in student]
@@ -11,14 +17,14 @@ def add_new_student(name, surname):
         return f"Student has already been added ({name} {surname})"
     student.append(name + ' ' + surname)
     student.sort()
-    student_list = open('/Users/asenkasazonova/PycharmProjects/Lab2/students.txt', 'w')
+    student_list = open(path, 'w')
     for person in student:
         student_list.write(person + "\n")
     return f'Student {name} {surname} has been successfully added'
 
 
 def find_student(surname, name=None):
-    student_list = open('/Users/asenkasazonova/PycharmProjects/Lab2/students.txt', 'r')
+    student_list = open(path, 'r')
     if name is not None:
         for person in student_list:
             if name + ' ' + surname in person.strip():
@@ -33,7 +39,7 @@ def find_student(surname, name=None):
 
 
 def remove_student(surname, name=None):
-    student_list = open('/Users/asenkasazonova/PycharmProjects/Lab2/students.txt', 'r')
+    student_list = open(path, 'r')
     student = student_list.readlines()
     # print(student)
     student = [i.strip() for i in student]
@@ -45,7 +51,7 @@ def remove_student(surname, name=None):
         return f"No such student found ({name} {surname})"
     else:
         student.remove(name + " " + surname)
-        student_list = open('/Users/asenkasazonova/PycharmProjects/Lab2/students.txt', 'w')
+        student_list = open(path, 'w')
         for person in student:
             student_list.write(person + "\n")
         student_list.close()
@@ -53,7 +59,7 @@ def remove_student(surname, name=None):
 
 
 def edit_student(name, surname, edit_name=None, edit_surname=None):
-    student_list = open('/Users/asenkasazonova/PycharmProjects/Lab2/students.txt', 'r')
+    student_list = open(path, 'r')
     student = student_list.readlines()
     # print(student)
     student = [i.strip() for i in student]
